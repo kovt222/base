@@ -1,4 +1,4 @@
-import { Controller } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { User } from "./user.entity";
 import { BaseCrudController } from "@shared/base/base.controller";
@@ -11,7 +11,7 @@ export class UserController extends BaseCrudController<User, UserService> {
     super(service);
   }
 
-  @ApiBearerAuth()
+  @Get('get-all')
   async findAll(): Promise<{ total: number; data: User[]; }> {
     return super.findAll();
   }

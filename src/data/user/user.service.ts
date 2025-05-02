@@ -12,7 +12,6 @@ export class UserService extends BaseCrudService<User> {
   }
 
   async findAll(): Promise<{ total: number; data: User[]; }> {
-    console.log('service');
     const [data, total] = await this.repository.findAndCount();
     return { total, data };
     

@@ -19,7 +19,10 @@ export class BaseCrudService<E extends BaseEntity> {
       where: {
         is_deleted: false as any,
         is_hidden: false as any,
-      }
+      },
+      order: {
+        id: 'DESC' as any,
+      },
     });
 
     return { total, data };
@@ -29,7 +32,10 @@ export class BaseCrudService<E extends BaseEntity> {
     const [data, total] = await this.repository.findAndCount({
       where: {
         is_deleted: false as any,
-      }
+      },
+      order: {
+        id: 'DESC' as any,
+      },
     });
     return { total, data };
   }
