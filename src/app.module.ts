@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { ConfigurationModule } from '@config/configuration.module';
 import { DatabaseModule } from '@database/database.module';
 import { DataModule } from '@data/data.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { LoggingInterceptor } from '@shared/interceptors/logging.interceptor';
 
 @Module({
   imports: [
@@ -12,6 +14,9 @@ import { DataModule } from '@data/data.module';
     DataModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
+  ],
 })
 export class AppModule {}
