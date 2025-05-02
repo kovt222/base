@@ -16,7 +16,7 @@
       "@data/*": ["src/data/*"],
       "@database/*": ["src/database/*"],
       "@shared/*": ["src/shared/*"],
-      "@modules/*": ["src/modules/*"],
+      "@modules/*": ["src/data/*"],
     },
     "incremental": true,
     "skipLibCheck": true,
