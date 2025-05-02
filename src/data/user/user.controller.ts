@@ -11,8 +11,8 @@ export class UserController extends BaseCrudController<User, UserService> {
     super(service);
   }
 
-  @Get('get-all')
-  async findAll(): Promise<{ total: number; data: User[]; }> {
-    return super.findAll();
-  }
+  // @Get('get-all')
+  // async findAll(): Promise<{ total: number; data: User[]; }> {
+  //   return super.findAll();
+  // }
 }
