@@ -26,6 +26,7 @@ const ENTITIES = [
 				// entities: ENTITIES,
 				migrationsRun: false,
 				synchronize: false,
+				logging: false,
 			}),
 			inject: [ConfigurationService],
 		})

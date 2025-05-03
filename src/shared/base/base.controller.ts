@@ -1,4 +1,4 @@
-import { Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
+import { Get, Post, Put, Delete, Body, Param, Query, BadRequestException } from '@nestjs/common';
 import { BaseCrudService } from './base.service';
 import { DeepPartial } from 'typeorm';
 import { BaseEntity } from './base.entity';
@@ -17,7 +17,11 @@ export class BaseCrudController<E extends BaseEntity, X extends BaseCrudService<
 
   @Get('get-all')
   async findAll(@Query() input: GenericFilterDto) {
-    return this.service.findAll(input);
+    try {
+      return await this.service.findAll(input);
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
   @Get('get-to-manager')
   async getToManager(@Query() input: GenericFilterDto) {
